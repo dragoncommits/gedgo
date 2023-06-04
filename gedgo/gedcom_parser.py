@@ -18,7 +18,7 @@ class GedcomParser(object):
 
     def __init__(self, file_name_or_stream):
         if isinstance(file_name_or_stream, str):
-            self.file = open(file_name_or_stream, 'rU')
+            self.file = open(file_name_or_stream, 'r')
         else:
             self.file = file_name_or_stream
         self.__parse()

@@ -40,15 +40,14 @@ to abstract away dependencies on the development environment so you don't have
 to install packages or a have a database running in order to get started.
 
 #### Dependencies
-
-Download and install [Docker](https://www.docker.com/community-edition).  Test
-that it works with `$ docker ps`
-
 Clone this repo and `cd` into it.
 
+This django website runs on python 3.11 and has not been tested on earlier versions
+
 ```bash
-# Build the docker images
-$ docker-compose build
+python manage.py migrate
+python manage.py createsuperuser
+
 ```
 
 #### Importing Data
@@ -63,14 +62,7 @@ gedcom to the base gedgo directory.
 Then run the import:
 
 ```bash
-# Create the database tables
-$ docker-compose run app python manage.py migrate
-
-# Create a user for yourself
-$ docker-compose run app python manage.py createsuperuser
-
-# Import your gedcom file
-$ docker-compose run app python manage.py add_gedcom your-gedcom-file.ged
+python manage.py add_gedcom your-gedcom-file.ged
 ```
 
 The initial import may take a while, since it creates thumbnails for any
@@ -81,11 +73,9 @@ images.
 Start up the web server and worker with
 
 ```bash
-$ docker-compose up
+python manage.py runserver
 ```
-
-If you're running a Mac you can go to [http://gedgo.local](http://gedgo.local),
-or just [localhost](http://localhost).
+ visit localhost:8000
 
 #### Overriding settings
 
@@ -112,7 +102,7 @@ To update your gedcom, you can either use the manage.py command, passing it
 the integer ID of the gedcom object you'd like to update, for example:
 
 ```bash
-$ docker-compose run app python manage.py update_gedcom 1 your-gedcom-file.ged
+python manage.py update_gedcom 1 your-gedcom-file.ged
 ```
 
 Or, with the Celery worker running, you can use the web interface.
@@ -122,5 +112,5 @@ Or, with the Celery worker running, you can use the web interface.
 You can run the unit tests with:
 
 ```bash
-$ docker-compose run app ./test.sh
+python manage.py test gedgo
 ```

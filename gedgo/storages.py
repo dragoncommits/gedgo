@@ -83,7 +83,7 @@ class DropBoxSearchableStorage(Storage):
 
 
 class FileSystemSearchableStorage(FileSystemStorage):
-    def search(self, query):
+    def search(self, query,dirname):
         terms = [term for term in query.lower().split()]
         directories, files = [], []
         for root, ds, fs in os.walk(self.location):

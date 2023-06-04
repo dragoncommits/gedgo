@@ -43,3 +43,12 @@ pip-log.txt
 docker-compose-prd.yml
 settings_local.py
 /tmp
+/static/
+/.idea/gedgo.iml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/vcs.xml
+/db.sqlite
+/.idea/.gitignore
